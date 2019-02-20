@@ -14,6 +14,7 @@ public class cameraSwitch : MonoBehaviour
     public GameObject text3;
     public GameObject textEnd;
 
+    private int count;
     private bool menuOpen;
 
     private void Start()
