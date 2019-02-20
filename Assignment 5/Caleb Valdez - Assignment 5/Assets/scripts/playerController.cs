@@ -13,11 +13,17 @@ public class playerController : MonoBehaviour
 
     public CharacterController controller;
 
+    public ParticleSystem particle;
+
+    private int count;
+
     private Vector3 moveDirection;
     public float gravityScale;
 
     public AudioClip footsteps;
     AudioSource audioSource;
+
+    //public AudioClip pickup;
 
     public Animator anim;
 
@@ -28,6 +34,7 @@ public class playerController : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
         audioSource.volume = 0f;
         controller = GetComponent<CharacterController>();
+        particle.Stop();
     }
 
     private void Update()
@@ -74,16 +81,18 @@ public class playerController : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-       /* if (other.gameObject.CompareTag("Collectable"))
+        if (other.gameObject.CompareTag("Collectable"))
         {
 
             other.gameObject.SetActive (false);
             count++;
-            SetCountText();
+            particle.Play();
 
-            audioSource.PlayOneShot(pickup, 0.7f);
+            //SetCountText();
 
-        }*/
+            //audioSource.PlayOneShot(pickup, 0.5f);
+
+        }
     }
 
 }
